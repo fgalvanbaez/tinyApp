@@ -17,32 +17,25 @@
 <script type="text/javascript">
 function seleccionar()
 {
-    //alert ("Enviando datos al servidor");
-    
-var serverURL = "http://" + document.getElementById('ip').value + ":" + document.getElementById('puerto').value;
+    var serverURL = "http://localhost:10021/";
     var sensor = 0;
-    var id = document.getElementById('idMote').value;
-    alert (id);
-  
-    id = 1;
-    
     if (document.getElementById('lista').value == "Acelerometro")
      sensor = 0;
     else
      sensor = 1;
+    //alert(id);
 
     // POST Call
     $.ajax({
         url: serverURL,
         method: "POST",
         data: { 
-	    id : id,
+	    id : id
             sensor : sensor 
         },
         dataType: "html",
         success : function(data) {
             console.log("Response from server: " + data);
-		 alert ("Datos enviados correctamente al servidor");
         },
         error : function(error) {
             console.log("Error: " + error);
@@ -62,9 +55,6 @@ var serverURL = "http://" + document.getElementById('ip').value + ":" + document
     </script>
 <h2>Escoja el sensor que desee utilizar</h2>
 <form name="sensores">
- Id del mote: <input id="idMote" type="text"></input></br>
- Introduzca la ip del servidor: <input id="ip" type="text" name="ip"><br>
-  Introduzca el puerto del servidor: <input id="puerto" type="text" name="puerto"><br>
 <select id="lista" size="1">
 <option>Acelerometro</option>
 <option>Sensor de luz</option>

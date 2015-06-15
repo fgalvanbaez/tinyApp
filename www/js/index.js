@@ -2,6 +2,8 @@
  * Created by FranciscoAlexis on 02/06/2015.
  */
 
+
+
 var app = {
     /*
      Application constructor
@@ -41,6 +43,7 @@ var app = {
     onNfc: function(nfcEvent) {
         var tag = nfcEvent.tag;
         app.display("Read tag: " + nfc.bytesToHexString(tag.id));
+        document.getElementById("idMote").value=nfc.bytesToHexString(tag.id);
     },
 
     /*
@@ -58,4 +61,5 @@ var app = {
     clear: function() {
         messageDiv.innerHTML = "";
     }
+
 };     // end of app
